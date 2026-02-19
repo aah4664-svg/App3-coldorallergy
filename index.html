@@ -51,13 +51,16 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
         }
 
 		function calculateResults() {
-    var allergyPercent = (allergy_count / 4) * 100;
-    var coldPercent = (cold_count / 4) * 100;
+    // We now divide by 6 because there are 6 total questions
+   		 var allergyPercent = (allergy_count / 6) * 100;
+   		 var coldPercent = (cold_count / 6) * 100;
     
-    // This connects the JavaScript math to the HTML page
-    var resultText = document.getElementById("results");
-    resultText.innerHTML = "Probability it is allergies = " + allergyPercent + "%" + 
-                           "<br> Probability it is a cold = " + coldPercent + "%";
+    // Connect to the 'results' paragraph in the HTML
+		var resultText = document.getElementById("results");
+    
+    // Update the results page with the new math
+    resultText.innerHTML = "Probability it is allergies = " + allergyPercent.toFixed(0) + "%" + 
+                           "<br> Probability it is a cold = " + coldPercent.toFixed(0) + "%";
 }
 	
   </script>
@@ -145,6 +148,27 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
         <a href="#five" onclick="coldAdd();" class="w3-btn w3-black"> NO </a>   <!--added NO button and cold function-->
 </div>	<!-- /content -->
 	
+<div class="page" id="five">
+    <header class="w3-container w3-flat-carrot">
+        <h1>Question 5</h1>
+    </header>
+    <div class="w3-container">
+        <p>Do you have dark circles or puffiness under your eyes (allergic shiners)?</p>
+        <a href="#six" onclick="allergyAdd();" class="w3-btn w3-black">Yes</a>
+        <a href="#six" onclick="coldAdd();" class="w3-btn w3-black">No</a>
+    </div>
+
+<div class="page" id="six">
+    <header class="w3-container w3-flat-carrot">
+        <h1>Question 6</h1>
+    </header>
+    <div class="w3-container">
+        <p>Is your mucus thick and yellow or green in color?</p>
+        <a href="#resultsPage" onclick="coldAdd(); calculateResults();" class="w3-btn w3-black">Yes</a>
+        <a href="#resultsPage" onclick="allergyAdd(); calculateResults();" class="w3-btn w3-black">No</a>
+    </div>
+</div>
+
 	
 <div class="page" id="five">
 	<div class="w3-container w3-flat-carrot">
